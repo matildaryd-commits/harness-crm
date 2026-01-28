@@ -2,7 +2,8 @@ import { useState } from 'react';
 import {
   Plus, Search, MoreVertical, Phone, Mail, ChevronRight,
   User, Calendar, TrendingUp, Heart, FileText, CreditCard,
-  CheckCircle, AlertCircle, Clock, Send, Star
+  CheckCircle, AlertCircle, Clock, Send, Star, TrendingDown,
+  ArrowUpRight, ArrowDownRight
 } from 'lucide-react';
 
 export default function Owners() {
@@ -16,7 +17,7 @@ export default function Owners() {
       id: 1,
       name: 'Johan Zetterlund',
       company: 'Stall Zet AB',
-      viaCompany: null, // Äger direkt, inte via OfCourse/Easy
+      viaCompany: null,
       type: 'company',
       email: 'johan@stallzet.se',
       phone: '070-123 45 67',
@@ -26,12 +27,22 @@ export default function Owners() {
         { name: 'Deeply Express', ownership: 50, status: 'active', officialOwner: 'Stall Zet AB' },
       ],
       totalOwnership: 1,
-      totalValue: '450 000 kr',
-      monthlyFee: '12 500 kr',
-      paymentStatus: 'paid',
+      // ROI - vad kunden tjänat (prispengar minus avgifter)
+      roi: { amount: 342500, trend: 'up', percentage: 28 },
+      // Avgift per månad
+      fee: 12500,
+      // Senaste faktura
+      lastInvoice: { date: '2024-01-15', paid: true, amount: 12500 },
       lastActivity: '2024-01-28',
       notes: 'Långvarig kund, mycket nöjd. Intresserad av fler andelar.',
       source: 'referral',
+      // Ekonomisk historik
+      financials: {
+        totalPaid: 450000,
+        totalEarnings: 792500,
+        prizeMoneyShare: 685000,
+        bonuses: 107500,
+      },
       communications: [
         { type: 'email', text: 'Månadsrapport januari', date: '2024-01-28' },
         { type: 'call', text: 'Diskussion om V75-start', date: '2024-01-25' },
@@ -52,12 +63,18 @@ export default function Owners() {
         { name: 'Deeply Express', ownership: 50, status: 'active', officialOwner: 'SRF Stable AB' },
       ],
       totalOwnership: 1,
-      totalValue: '450 000 kr',
-      monthlyFee: '12 500 kr',
-      paymentStatus: 'paid',
+      roi: { amount: 285000, trend: 'up', percentage: 22 },
+      fee: 12500,
+      lastInvoice: { date: '2024-01-15', paid: true, amount: 12500 },
       lastActivity: '2024-01-27',
       notes: 'Professionellt stall, bra kommunikation.',
       source: 'direct',
+      financials: {
+        totalPaid: 375000,
+        totalEarnings: 660000,
+        prizeMoneyShare: 570000,
+        bonuses: 90000,
+      },
       communications: [
         { type: 'email', text: 'Månadsrapport januari', date: '2024-01-28' },
         { type: 'app', text: 'Kommenterade träningsuppdatering', date: '2024-01-27' },
@@ -79,12 +96,18 @@ export default function Owners() {
         { name: 'Global Holy Ground', ownership: 100, status: 'resting', officialOwner: 'Stall Global AB' },
       ],
       totalOwnership: 3,
-      totalValue: '1 200 000 kr',
-      monthlyFee: '45 000 kr',
-      paymentStatus: 'paid',
+      roi: { amount: 1850000, trend: 'up', percentage: 45 },
+      fee: 45000,
+      lastInvoice: { date: '2024-01-20', paid: true, amount: 45000 },
       lastActivity: '2024-01-28',
       notes: 'Stor kund med flera hästar. VIP-behandling.',
       source: 'referral',
+      financials: {
+        totalPaid: 1800000,
+        totalEarnings: 3650000,
+        prizeMoneyShare: 3200000,
+        bonuses: 450000,
+      },
       communications: [
         { type: 'email', text: 'Månadsrapport januari', date: '2024-01-28' },
         { type: 'meeting', text: 'Kvartalsmöte', date: '2024-01-20' },
@@ -105,12 +128,18 @@ export default function Owners() {
         { name: 'Pargas Sox', ownership: 50, status: 'active', officialOwner: 'OfCourse KB' },
       ],
       totalOwnership: 1,
-      totalValue: '250 000 kr',
-      monthlyFee: '7 500 kr',
-      paymentStatus: 'paid',
+      roi: { amount: 425000, trend: 'up', percentage: 52 },
+      fee: 7500,
+      lastInvoice: { date: '2024-01-10', paid: true, amount: 7500 },
       lastActivity: '2024-01-26',
       notes: 'Finsk ägare, kommunicerar på engelska. Äger via OfCourse KB.',
       source: 'direct',
+      financials: {
+        totalPaid: 450000,
+        totalEarnings: 875000,
+        prizeMoneyShare: 820000,
+        bonuses: 55000,
+      },
       communications: [
         { type: 'email', text: 'Monthly report January', date: '2024-01-28' },
         { type: 'app', text: 'Liked training update', date: '2024-01-26' },
@@ -130,12 +159,18 @@ export default function Owners() {
         { name: 'Pargas Sox', ownership: 25, status: 'active', officialOwner: 'OfCourse KB' },
       ],
       totalOwnership: 1,
-      totalValue: '125 000 kr',
-      monthlyFee: '3 750 kr',
-      paymentStatus: 'paid',
+      roi: { amount: 78500, trend: 'up', percentage: 35 },
+      fee: 3750,
+      lastInvoice: { date: '2024-01-10', paid: true, amount: 3750 },
       lastActivity: '2024-01-25',
       notes: 'Äger via OfCourse KB. Engagerad i appen.',
       source: 'app',
+      financials: {
+        totalPaid: 82500,
+        totalEarnings: 161000,
+        prizeMoneyShare: 152000,
+        bonuses: 9000,
+      },
       communications: [
         { type: 'email', text: 'Månadsrapport januari', date: '2024-01-28' },
         { type: 'app', text: 'Frågade om V75-chansen', date: '2024-01-25' },
@@ -155,12 +190,18 @@ export default function Owners() {
         { name: 'Pargas Sox', ownership: 25, status: 'active', officialOwner: 'OfCourse KB' },
       ],
       totalOwnership: 1,
-      totalValue: '125 000 kr',
-      monthlyFee: '3 750 kr',
-      paymentStatus: 'paid',
+      roi: { amount: 62000, trend: 'up', percentage: 28 },
+      fee: 3750,
+      lastInvoice: { date: '2024-01-10', paid: true, amount: 3750 },
       lastActivity: '2024-01-24',
       notes: 'Privatperson som äger via OfCourse KB. Första hästen.',
       source: 'app',
+      financials: {
+        totalPaid: 67500,
+        totalEarnings: 129500,
+        prizeMoneyShare: 122000,
+        bonuses: 7500,
+      },
       communications: [
         { type: 'email', text: 'Månadsrapport januari', date: '2024-01-28' },
         { type: 'app', text: 'Kommenterade lopp', date: '2024-01-24' },
@@ -183,12 +224,18 @@ export default function Owners() {
         { name: 'Panama Bro', ownership: 100, status: 'resting', officialOwner: 'Bro Stables AB' },
       ],
       totalOwnership: 4,
-      totalValue: '1 600 000 kr',
-      monthlyFee: '60 000 kr',
-      paymentStatus: 'pending',
+      roi: { amount: -125000, trend: 'down', percentage: -8 },
+      fee: 60000,
+      lastInvoice: { date: '2024-01-01', paid: false, amount: 60000, dueDate: '2024-01-31' },
       lastActivity: '2024-01-28',
       notes: 'Stort uppfödningsstall. Faktura förfaller 31/1.',
       source: 'direct',
+      financials: {
+        totalPaid: 1440000,
+        totalEarnings: 1315000,
+        prizeMoneyShare: 1250000,
+        bonuses: 65000,
+      },
       communications: [
         { type: 'email', text: 'Fakturapåminnelse', date: '2024-01-28' },
         { type: 'call', text: 'Diskussion om unghästar', date: '2024-01-22' },
@@ -210,12 +257,18 @@ export default function Owners() {
         { name: 'Lupin Mearas', ownership: 100, status: 'active', officialOwner: 'Stall Mearas HB' },
       ],
       totalOwnership: 3,
-      totalValue: '850 000 kr',
-      monthlyFee: '32 000 kr',
-      paymentStatus: 'paid',
+      roi: { amount: 520000, trend: 'up', percentage: 38 },
+      fee: 32000,
+      lastInvoice: { date: '2024-01-15', paid: true, amount: 32000 },
       lastActivity: '2024-01-27',
       notes: 'Fokus på Muscle Hill-avkommor. Långsiktig plan.',
       source: 'referral',
+      financials: {
+        totalPaid: 896000,
+        totalEarnings: 1416000,
+        prizeMoneyShare: 1320000,
+        bonuses: 96000,
+      },
       communications: [
         { type: 'email', text: 'Månadsrapport januari', date: '2024-01-28' },
         { type: 'meeting', text: 'Avelsplanering 2024', date: '2024-01-27' },
@@ -235,12 +288,18 @@ export default function Owners() {
         { name: 'Mansa Musa Mearas', ownership: 40, status: 'active', officialOwner: 'Easy KB' },
       ],
       totalOwnership: 1,
-      totalValue: '200 000 kr',
-      monthlyFee: '6 000 kr',
-      paymentStatus: 'paid',
+      roi: { amount: 145000, trend: 'up', percentage: 62 },
+      fee: 6000,
+      lastInvoice: { date: '2024-01-15', paid: true, amount: 6000 },
       lastActivity: '2024-01-24',
       notes: 'Köpte andel via Hitta häst i appen. Äger via Easy KB.',
       source: 'app',
+      financials: {
+        totalPaid: 90000,
+        totalEarnings: 235000,
+        prizeMoneyShare: 220000,
+        bonuses: 15000,
+      },
       communications: [
         { type: 'email', text: 'Månadsrapport januari', date: '2024-01-28' },
         { type: 'app', text: 'Frågade om nästa start', date: '2024-01-24' },
@@ -260,12 +319,18 @@ export default function Owners() {
         { name: 'Grazzhopper', ownership: 100, status: 'resting', officialOwner: 'Team Grazzhopper AB' },
       ],
       totalOwnership: 1,
-      totalValue: '800 000 kr',
-      monthlyFee: '15 000 kr',
-      paymentStatus: 'paid',
+      roi: { amount: 2850000, trend: 'up', percentage: 158 },
+      fee: 15000,
+      lastInvoice: { date: '2024-01-05', paid: true, amount: 15000 },
       lastActivity: '2024-01-20',
       notes: 'Syndikat med 8 medlemmar. Mikael är kontaktperson.',
       source: 'direct',
+      financials: {
+        totalPaid: 720000,
+        totalEarnings: 3570000,
+        prizeMoneyShare: 3400000,
+        bonuses: 170000,
+      },
       communications: [
         { type: 'email', text: 'Uppdatering om skadestatus', date: '2024-01-20' },
         { type: 'call', text: 'Veterinärrapport', date: '2024-01-15' },
@@ -285,12 +350,18 @@ export default function Owners() {
         { name: 'Optimum Volante', ownership: 100, status: 'active', officialOwner: 'Stall Volante AB' },
       ],
       totalOwnership: 1,
-      totalValue: '350 000 kr',
-      monthlyFee: '10 000 kr',
-      paymentStatus: 'overdue',
+      roi: { amount: -45000, trend: 'down', percentage: -18 },
+      fee: 10000,
+      lastInvoice: { date: '2023-12-15', paid: false, amount: 10000, dueDate: '2024-01-15' },
       lastActivity: '2024-01-10',
       notes: 'Har inte svarat på samtal. Följ upp betalning.',
       source: 'referral',
+      financials: {
+        totalPaid: 220000,
+        totalEarnings: 175000,
+        prizeMoneyShare: 165000,
+        bonuses: 10000,
+      },
       communications: [
         { type: 'email', text: 'Betalningspåminnelse 2', date: '2024-01-25' },
         { type: 'call', text: 'Inget svar', date: '2024-01-20' },
@@ -303,7 +374,7 @@ export default function Owners() {
     { label: 'Totalt ägare', value: owners.length, icon: User },
     { label: 'Aktiva', value: owners.filter(o => o.status === 'active').length, icon: CheckCircle },
     { label: 'Från appen', value: owners.filter(o => o.source === 'app').length, icon: Heart },
-    { label: 'Förfallna', value: owners.filter(o => o.paymentStatus === 'overdue').length, icon: AlertCircle },
+    { label: 'Obetalda', value: owners.filter(o => !o.lastInvoice.paid).length, icon: AlertCircle },
   ];
 
   const filteredOwners = owners.filter(owner => {
@@ -313,21 +384,68 @@ export default function Owners() {
     const matchesTab = activeTab === 'all' ||
                       (activeTab === 'company' && owner.type === 'company') ||
                       (activeTab === 'private' && owner.type === 'private') ||
-                      (activeTab === 'pending' && owner.paymentStatus !== 'paid');
+                      (activeTab === 'pending' && !owner.lastInvoice.paid);
     return matchesSearch && matchesTab;
   });
 
-  const getPaymentStatusBadge = (status) => {
-    switch (status) {
-      case 'paid':
-        return <span className="status-badge active">Betald</span>;
-      case 'pending':
-        return <span className="status-badge in-progress">Väntar</span>;
-      case 'overdue':
-        return <span className="status-badge eliminated">Förfallen</span>;
-      default:
-        return null;
+  const formatCurrency = (amount) => {
+    if (amount >= 1000000) {
+      return `${(amount / 1000000).toFixed(1)} mkr`;
+    } else if (amount >= 1000) {
+      return `${(amount / 1000).toFixed(0)} tkr`;
     }
+    return `${amount} kr`;
+  };
+
+  const getInvoiceStatusBadge = (invoice) => {
+    if (invoice.paid) {
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+          <span className="status-badge active">Betald</span>
+          <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>{invoice.date}</span>
+        </div>
+      );
+    } else {
+      const isOverdue = invoice.dueDate && new Date(invoice.dueDate) < new Date();
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+          <span className={`status-badge ${isOverdue ? 'eliminated' : 'in-progress'}`}>
+            {isOverdue ? 'Förfallen' : 'Obetald'}
+          </span>
+          <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>
+            {isOverdue ? `Förföll ${invoice.dueDate}` : `Förfaller ${invoice.dueDate}`}
+          </span>
+        </div>
+      );
+    }
+  };
+
+  const getRoiBadge = (roi) => {
+    const isPositive = roi.amount >= 0;
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+        <span style={{
+          fontWeight: '600',
+          color: isPositive ? 'var(--success)' : 'var(--danger)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px'
+        }}>
+          {isPositive ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
+          {isPositive ? '+' : ''}{formatCurrency(roi.amount)}
+        </span>
+        <span style={{
+          background: isPositive ? 'var(--success-light)' : 'var(--danger-light)',
+          color: isPositive ? 'var(--success)' : 'var(--danger)',
+          padding: '2px 6px',
+          borderRadius: '4px',
+          fontSize: '11px',
+          fontWeight: '600'
+        }}>
+          {isPositive ? '+' : ''}{roi.percentage}%
+        </span>
+      </div>
+    );
   };
 
   const getTypeLabel = (type) => {
@@ -337,11 +455,6 @@ export default function Owners() {
       case 'syndicate': return 'Syndikat';
       default: return type;
     }
-  };
-
-  // Get owners who use a specific shell company (OfCourse/Easy)
-  const getOwnersViaCompany = (companyName) => {
-    return owners.filter(o => o.viaCompany === companyName);
   };
 
   const getActivityIcon = (type) => {
@@ -413,7 +526,7 @@ export default function Owners() {
               { id: 'all', label: 'Alla' },
               { id: 'company', label: 'Företag' },
               { id: 'private', label: 'Privat' },
-              { id: 'pending', label: 'Att betala' },
+              { id: 'pending', label: 'Obetalda' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -436,9 +549,9 @@ export default function Owners() {
               <tr>
                 <th>Ägare</th>
                 <th>Hästar</th>
-                <th>Totalt värde</th>
-                <th>Månadsavgift</th>
-                <th>Betalning</th>
+                <th>ROI</th>
+                <th>Avg/mån</th>
+                <th>Senaste faktura</th>
                 <th>Senast aktiv</th>
                 <th></th>
               </tr>
@@ -474,8 +587,8 @@ export default function Owners() {
                           {!owner.company && <span>{getTypeLabel(owner.type)}</span>}
                           {owner.viaCompany && (
                             <span style={{
-                              background: 'var(--warning-light, #fff3cd)',
-                              color: 'var(--warning, #856404)',
+                              background: 'var(--warning-light)',
+                              color: 'var(--warning)',
                               padding: '2px 6px',
                               borderRadius: '4px',
                               fontSize: '10px',
@@ -502,9 +615,9 @@ export default function Owners() {
                       )}
                     </div>
                   </td>
-                  <td style={{ fontWeight: '500' }}>{owner.totalValue}</td>
-                  <td>{owner.monthlyFee}</td>
-                  <td>{getPaymentStatusBadge(owner.paymentStatus)}</td>
+                  <td>{getRoiBadge(owner.roi)}</td>
+                  <td style={{ fontWeight: '500' }}>{formatCurrency(owner.fee)}</td>
+                  <td>{getInvoiceStatusBadge(owner.lastInvoice)}</td>
                   <td style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{owner.lastActivity}</td>
                   <td>
                     <button
@@ -567,8 +680,8 @@ export default function Owners() {
                   )}
                   {selectedOwner.viaCompany && (
                     <span style={{
-                      background: 'var(--warning-light, #fff3cd)',
-                      color: 'var(--warning, #856404)',
+                      background: 'var(--warning-light)',
+                      color: 'var(--warning)',
                       padding: '4px 8px',
                       borderRadius: '100px',
                       fontSize: '11px',
@@ -584,11 +697,11 @@ export default function Owners() {
                   {getTypeLabel(selectedOwner.type)} • Kund sedan {selectedOwner.since}
                 </div>
               </div>
-              {getPaymentStatusBadge(selectedOwner.paymentStatus)}
+              {getInvoiceStatusBadge(selectedOwner.lastInvoice)}
             </div>
 
             {/* Contact Info */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '20px' }}>
               <div style={{ background: 'var(--background)', padding: '12px', borderRadius: '8px' }}>
                 <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>E-post</div>
                 <div style={{ fontSize: '14px' }}>{selectedOwner.email}</div>
@@ -597,12 +710,52 @@ export default function Owners() {
                 <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>Telefon</div>
                 <div style={{ fontSize: '14px' }}>{selectedOwner.phone}</div>
               </div>
-              {selectedOwner.contactPerson && (
-                <div style={{ background: 'var(--background)', padding: '12px', borderRadius: '8px' }}>
-                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>Kontaktperson</div>
-                  <div style={{ fontSize: '14px' }}>{selectedOwner.contactPerson}</div>
+            </div>
+
+            {/* Financial Summary */}
+            <div style={{ marginBottom: '20px' }}>
+              <h4 style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '12px' }}>Ekonomisk översikt</h4>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px' }}>
+                <div style={{
+                  background: selectedOwner.roi.amount >= 0 ? 'var(--success-light)' : 'var(--danger-light)',
+                  padding: '16px',
+                  borderRadius: '8px',
+                  textAlign: 'center'
+                }}>
+                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>ROI</div>
+                  <div style={{
+                    fontSize: '18px',
+                    fontWeight: '600',
+                    color: selectedOwner.roi.amount >= 0 ? 'var(--success)' : 'var(--danger)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '4px'
+                  }}>
+                    {selectedOwner.roi.amount >= 0 ? <ArrowUpRight size={16} /> : <ArrowDownRight size={16} />}
+                    {selectedOwner.roi.amount >= 0 ? '+' : ''}{formatCurrency(selectedOwner.roi.amount)}
+                  </div>
+                  <div style={{
+                    fontSize: '11px',
+                    color: selectedOwner.roi.amount >= 0 ? 'var(--success)' : 'var(--danger)',
+                    marginTop: '2px'
+                  }}>
+                    {selectedOwner.roi.amount >= 0 ? '+' : ''}{selectedOwner.roi.percentage}%
+                  </div>
                 </div>
-              )}
+                <div style={{ background: 'var(--background)', padding: '16px', borderRadius: '8px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>Prispengar</div>
+                  <div style={{ fontSize: '18px', fontWeight: '600' }}>{formatCurrency(selectedOwner.financials.prizeMoneyShare)}</div>
+                </div>
+                <div style={{ background: 'var(--background)', padding: '16px', borderRadius: '8px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>Betalat totalt</div>
+                  <div style={{ fontSize: '18px', fontWeight: '600' }}>{formatCurrency(selectedOwner.financials.totalPaid)}</div>
+                </div>
+                <div style={{ background: 'var(--background)', padding: '16px', borderRadius: '8px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>Månadsavgift</div>
+                  <div style={{ fontSize: '18px', fontWeight: '600' }}>{formatCurrency(selectedOwner.fee)}</div>
+                </div>
+              </div>
             </div>
 
             {/* Horses */}
@@ -652,24 +805,6 @@ export default function Owners() {
                     </span>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Financials */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '20px' }}>
-              <div style={{ background: 'var(--background)', padding: '16px', borderRadius: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                  <TrendingUp size={16} style={{ color: 'var(--primary)' }} />
-                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Totalt värde</span>
-                </div>
-                <div style={{ fontSize: '20px', fontWeight: '600' }}>{selectedOwner.totalValue}</div>
-              </div>
-              <div style={{ background: 'var(--background)', padding: '16px', borderRadius: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                  <CreditCard size={16} style={{ color: 'var(--primary)' }} />
-                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Månadsavgift</span>
-                </div>
-                <div style={{ fontSize: '20px', fontWeight: '600' }}>{selectedOwner.monthlyFee}</div>
               </div>
             </div>
 

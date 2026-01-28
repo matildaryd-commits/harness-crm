@@ -4,6 +4,7 @@ import TopBar from './components/TopBar';
 import Dashboard from './pages/Dashboard';
 import Horses from './pages/Horses';
 import Training from './pages/Training';
+import Events from './pages/Events';
 import Leads from './pages/Leads';
 import Owners from './pages/Owners';
 
@@ -18,7 +19,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/horses" element={<Horses />} />
             <Route path="/training" element={<Training />} />
-            <Route path="/events" element={<PlaceholderPage title="Lopp & Event" />} />
+            <Route path="/events" element={<Events />} />
             <Route path="/owners" element={<Owners />} />
             <Route path="/leads" element={<Leads />} />
             <Route path="/settings" element={<PlaceholderPage title="Inställningar" />} />
